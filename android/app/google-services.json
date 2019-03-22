@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "445330687814",
+    "firebase_url": "https://novelreader-133c0.firebaseio.com",
+    "project_id": "novelreader-133c0",
+    "storage_bucket": "novelreader-133c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445330687814:android:8d04443023fe9faa",
+        "android_client_info": {
+          "package_name": "com.passerbyz.novelreader"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "445330687814-b5ej0jjbjgp8pf8scjoi80kus6qo98t4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMWcDbqZ5ZhGd3BRzsGOgKq0ibIX_LYrI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

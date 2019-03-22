@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>445330687814-lq5gfhm7oagg39nr8suc35gtkriar65a.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.445330687814-lq5gfhm7oagg39nr8suc35gtkriar65a</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB_X19t_uL36dJmv4qFkHYoWOLeSwkukx0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>445330687814</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.passerbyz.novelReader</string>
+	<key>PROJECT_ID</key>
+	<string>novelreader-133c0</string>
+	<key>STORAGE_BUCKET</key>
+	<string>novelreader-133c0.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:445330687814:ios:bcd088e2076055f1</string>
+	<key>DATABASE_URL</key>
+	<string>https://novelreader-133c0.firebaseio.com</string>
+</dict>
+</plist>
