@@ -1,4 +1,4 @@
-import 'package:novel_reader/repo/bean/service_bean.dart';
+import 'package:novel_reader/db/provider/db_book_detail_bean.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:novel_reader/db/app_db.dart';
 

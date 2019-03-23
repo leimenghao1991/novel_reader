@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:novel_reader/model/shelf_view_beans.dart';
-import 'package:novel_reader/repo/bean/service_bean.dart';
-import 'package:novel_reader/repo/service/book_service.dart';
+import 'package:novel_reader/model/fromdb/shelf_view_beans.dart';
+import 'package:novel_reader/db/provider/db_book_detail_bean.dart';
+import 'package:novel_reader/service/book_service.dart';
 import 'package:novel_reader/db/app_db.dart';
 import 'package:novel_reader/db/provider/book_detail_provider.dart';
 

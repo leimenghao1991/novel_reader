@@ -1,7 +1,7 @@
 
 import 'package:dio/dio.dart';
-import 'package:novel_reader/model/search_view_bean.dart';
-import 'package:novel_reader/repo/service/book_service.dart';
+import 'package:novel_reader/model/fromnet/search_view_bean.dart';
+import 'package:novel_reader/service/book_service.dart';
 
 class SearchRepo {
   BookService _service;

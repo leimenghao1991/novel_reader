@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:novel_reader/bloc/bloc_provider.dart';
-import 'package:novel_reader/model/shelf_view_beans.dart';
+import 'package:novel_reader/model/fromdb/shelf_view_beans.dart';
 import 'package:novel_reader/pages/shelf/shelf_repo.dart';
 
 class ShelfBloc implements BlocBase {

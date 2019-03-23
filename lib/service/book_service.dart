@@ -54,15 +54,13 @@ class BookService {
   }
 
   ///获取书籍详细信息
-  void getBookDetail(String bookId, {Function success, Function error, Function empty, Function failed}) async {
+  Future<Response> getBookDetail(String bookId) async {
     Response response = await _dio.get("/book/$bookId");
-
-    _handleResponse(response, success: success, error: error, empty: empty, failed: failed);
+    return response;
   }
 
   ///获取书籍的热门评论
-  void getBookHotComments(String bookId, int count,
-      {Function success, Function error, Function empty, Function failed}) async {
+  Future<Response> getBookHotComments(String bookId, int count) async {
     Response response = await _dio.get(
         "/post/review/best-by-book",
         queryParameters: {
@@ -70,18 +68,17 @@ class BookService {
           "limit": count
         }
     );
-
-    _handleResponse(response, success: success, error: error, empty: empty, failed: failed);
+    return response;
   }
 
   ///根据给定的bookId获取推荐书籍
-  void getRecommendBooks(String bookId, int count, {Function success, Function error, Function empty, Function failed}) async {
+  Future<Response> getRecommendBooks(String bookId, int count, {Function success, Function error, Function empty, Function failed}) async {
     Response response = await _dio.get(
       "/book-list/$bookId/recommend",
       queryParameters: {"limit": count}
     );
 
-    _handleResponse(response, success: success, error: error, empty: empty, failed: failed);
+    return response;
   }
 
   ///failed是对于success来说的，一个请求要么success要么failed

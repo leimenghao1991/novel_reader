@@ -1,22 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:novel_reader/bloc/bloc_provider.dart';
-import 'package:novel_reader/model/shelf_view_beans.dart';
+import 'package:novel_reader/model/fromdb/shelf_view_beans.dart';
 import 'package:novel_reader/pages/PageUtils.dart';
 import 'package:novel_reader/pages/shelf/shelf_bloc.dart';
 import 'dart:developer';
 
-class ShelfView extends StatelessWidget {
+class ShelfView extends StatefulWidget {
   @override
   ShelfView({Key key}) : super(key: key);
 
   @override
+  State<StatefulWidget> createState() {
+    return _ShelfViewState();
+  }
+
+
+}
+
+class _ShelfViewState extends State<ShelfView> {
+  ShelfBloc _bloc;
+
+  @override
+  void initState() {
+    super.initState();
+    _bloc = BlocProvider.of(context);
+  }
+  @override
   Widget build(BuildContext context) {
-    final ShelfBloc _bloc = BlocProvider.of(context);
     return new StreamBuilder(
         initialData: _bloc.cache,
         stream: _bloc.books,
         builder: (context, snapshot) {
-          if (snapshot.hasData) {
+          if (_bloc.cache.isNotEmpty) {
             return _buildBookLists(snapshot.data);
           } else {
             return loadingPage();
@@ -33,9 +48,9 @@ class ShelfView extends StatelessWidget {
               return _buildListData(context, books[position]);
             },
             separatorBuilder: (context, position) => Container(
-                  height: 1,
-                  color: Color(0xFFFAFAFA),
-                ),
+              height: 1,
+              color: Color(0xFFFAFAFA),
+            ),
             itemCount: books.length),
       ),
     );
@@ -90,10 +105,10 @@ class ShelfView extends StatelessWidget {
       ),
       trailing: item.showHint
           ? Image.asset(
-              "assets/images/notif_red_dot.png",
-              width: 9,
-              height: 9,
-            )
+        "assets/images/notif_red_dot.png",
+        width: 9,
+        height: 9,
+      )
           : null,
       contentPadding: EdgeInsets.symmetric(vertical: 6, horizontal: 16),
       onLongPress: () {
@@ -101,4 +116,5 @@ class ShelfView extends StatelessWidget {
       },
     );
   }
+
 }

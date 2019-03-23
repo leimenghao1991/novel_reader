@@ -101,7 +101,7 @@ class BookDetailInfo {
       postCount: json["postCount"],
       updateTime: json["updated"],
       follwerCount: json["followerCount"],
-      retentionRadio: json["retentionRatio"],
+      retentionRadio: json["retentionRatio"].toString(),
       serializeWordCount: json["serializeWordCount"]
     );
   }

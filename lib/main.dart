@@ -14,20 +14,6 @@ void main(){
   runApp(MyApp());
 }
 
-class TestPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
-      body: Container(alignment: Alignment.center,
-          child: IconButton(icon: Icon(Icons.book), onPressed: () {
-            Navigator.push(context, new MaterialPageRoute(builder: (context) => new MyHomePage(title: 'Flutter Demo Home Page')) );
-          })),
-    );
-  }
-
-}
-
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -51,7 +37,7 @@ class MyApp extends StatelessWidget {
         dividerColor: Color(0xFFEEEEEE),
         scaffoldBackgroundColor: Color(0xFFFAFAFA),
       ),
-      home: TestPage(),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -76,22 +62,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
-
-  @override
-  void initState() {
-    super.initState();
-//    _viewModel = new ShelfViewModel();
-//    _viewModel.shelfBookSteam().listen((data){
-//      print("lemon ===> "  + data.toString());
-//    });
-
-
-//    _repo = new BookRepo();
-//    _repo.createShelfStream().listen((data) => data.documents.forEach((doc) => print(BookBean.fromJson(doc.data))));
-//
-//    _repo.getShelfBooks("male", (data){}, (data){}, (){});
-
-  }
 
   @override
   Widget build(BuildContext context) {

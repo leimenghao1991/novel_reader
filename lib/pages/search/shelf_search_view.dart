@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:novel_reader/bloc/bloc_provider.dart';
 import 'package:novel_reader/constants.dart';
-import 'package:novel_reader/model/search_view_bean.dart';
+import 'package:novel_reader/model/fromnet/search_view_bean.dart';
+import 'package:novel_reader/pages/bookdetail/book_detail_bloc.dart';
 import 'package:novel_reader/pages/search/shelf_search_bloc.dart';
 import 'dart:developer';
 
-import 'package:novel_reader/pages/book_detail_view.dart';
+import 'package:novel_reader/pages/bookdetail/book_detail_view.dart';
 
 class SearchView extends StatefulWidget {
   @override
@@ -30,7 +31,8 @@ class _SearchViewState extends State<SearchView> {
   ///点击搜索结果的某本书
   void _tapBook(BuildContext context, ShowSearchBookBean book) {
     Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return new BookDetailView(bookId: book.id);
+      return BlocProvider(
+          child: BookDetailView(), bloc: BookDetailBloc(book.id));
     }));
   }
 
@@ -211,16 +213,16 @@ class _SearchViewState extends State<SearchView> {
           initialData: bloc.cache,
           stream: bloc.data,
           builder: (BuildContext context, AsyncSnapshot snapshot) {
-            ViewData data = bloc.cache;
+            SearchViewData data = bloc.cache;
             if (data == null) {
               return _buildEmptyInputWidget(context, bloc);
             }
             switch (data.viewStatus) {
-              case ViewData.STATUS_EMPTY_INPUT:
+              case SearchViewData.STATUS_EMPTY_INPUT:
                 return _buildEmptyInputWidget(context, bloc);
-              case ViewData.STATUS_SUGGEST_WORD:
+              case SearchViewData.STATUS_SUGGEST_WORD:
                 return _buildSuggestWordWidget(context, bloc);
-              case ViewData.STATUS_SEARCH_RESULT:
+              case SearchViewData.STATUS_SEARCH_RESULT:
                 return _buildSearchResultWidget(context, bloc);
             }
             return _buildEmptyInputWidget(context, bloc);
