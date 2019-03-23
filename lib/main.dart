@@ -3,8 +3,9 @@ import 'package:novel_reader/bloc/bloc_provider.dart';
 import 'package:novel_reader/constants.dart';
 import 'package:novel_reader/pages/community_view.dart';
 import 'package:novel_reader/pages/find_view.dart';
+import 'package:novel_reader/pages/search/shelf_search_bloc.dart';
 import 'package:novel_reader/pages/shelf/shelf_bloc.dart';
-import 'package:novel_reader/pages/shelf_search_view.dart';
+import 'package:novel_reader/pages/search/shelf_search_view.dart';
 import 'package:novel_reader/pages/shelf/shelf_view.dart';
 import'package:flutter/rendering.dart';
 
@@ -113,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage>
                 ),
                 tooltip: "搜索",
                 onPressed: () {
-                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new SearchView()));
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => BlocProvider(bloc: SearchBloc(), child: new SearchView(),)));
                 },
               ),
               IconButton(

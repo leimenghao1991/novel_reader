@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:novel_reader/bloc/bloc_provider.dart';
 import 'package:novel_reader/model/shelf_view_beans.dart';
+import 'package:novel_reader/pages/PageUtils.dart';
 import 'package:novel_reader/pages/shelf/shelf_bloc.dart';
 import 'dart:developer';
 
@@ -18,9 +19,7 @@ class ShelfView extends StatelessWidget {
           if (snapshot.hasData) {
             return _buildBookLists(snapshot.data);
           } else {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
+            return loadingPage();
           }
         });
   }

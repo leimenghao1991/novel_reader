@@ -14,7 +14,7 @@ class BookDetailViewModel {
   StreamController<List<RecommendBookBean>> _recommendsCtrl;
 
   BookDetailViewModel(this.bookId) {
-    _service = BookService();
+    _service = BookService.get();
     _bookInfoCtrl = StreamController.broadcast();
     _hotCommentsCtrl = StreamController.broadcast();
     _recommendsCtrl = StreamController.broadcast();

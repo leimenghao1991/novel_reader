@@ -2,11 +2,15 @@ import 'package:dio/dio.dart';
 
 class BookService {
   static const String BASE_URL = "http://api.zhuishushenqi.com";
+  static final _bookService = BookService._internal();
+
+  static BookService get() {
+    return _bookService;
+  }
 
   Dio _dio;
 
-
-  BookService() {
+  BookService._internal() {
     _dio = new Dio();
     _dio.options.baseUrl = BASE_URL;
   }
@@ -25,30 +29,28 @@ class BookService {
   }
 
   ///搜索数据
-  void searchBook(String query, {Function success, Function error, Function empty, Function failed}) async {
+  Future<Response> searchBook(String query, {Function success, Function error, Function empty, Function failed}) async {
     Response response = await _dio.get(
       "/book/fuzzy-search",
       queryParameters: {"query": query}
     );
-
-    _handleResponse(response, success: success, error: error, empty: empty, failed: failed);
+    return response;
   }
 
   ///获取搜索热词
-  void getSearchHotWords({Function success, Function error, Function empty, Function failed}) async {
+  Future<Response> getSearchHotWords() async {
     Response response = await _dio.get("/book/hot-word");
-
-    _handleResponse(response, success: success, error: error, empty: empty, failed: failed);
+    return response;
   }
 
   ///用户输入自动补全
-  void getInputSuggest(String input, {Function success, Function error, Function empty, Function failed}) async {
-    Response response =await _dio.get(
+  Future<Response> getInputSuggest(String input) async {
+    Response response = await _dio.get(
         "/book/auto-complete",
         queryParameters: {"query": input}
     );
 
-    _handleResponse(response, success: success, error: error, empty: empty, failed: failed);
+    return response;
   }
 
   ///获取书籍详细信息
@@ -110,4 +112,10 @@ class BookService {
       failed();
     }
   }
+}
+
+
+bool isResponseSuccess(Response response) {
+  return response != null && response.statusCode >= 200 &&
+      response.statusCode < 300 && response.data != null;
 }

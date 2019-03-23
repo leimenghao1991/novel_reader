@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:novel_reader/repo/bean/service_bean.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:novel_reader/db/app_db.dart';
@@ -19,7 +18,6 @@ class BookDetailProvider {
   AppDatabase _appDatabase;
 
   BookDetailProvider(AppDatabase appDatabase) {
-//    debugger(when: true);
     _appDatabase = appDatabase;
   }
 
@@ -92,7 +90,6 @@ class BookDetailProvider {
     if (result == null || result.length == 0) {
       return [];
     }
-//    debugger(when: true);
     return result;
   }
 
@@ -120,24 +117,9 @@ class BookDetailProvider {
     return deleteById(book.id);
   }
 
-  /*
-  * final columnId = "book_id";
-final columnTitle = "title";
-final columnAuthor = "author";
-final columnShortIntro = "intro";
-final columnCover = "cover";
-final columnHasCp = "has_cp";
-final columnRetention = "retation";
-final columnChapterCount = "chapter_count";
-final columnLastChapter = "last_chapter";
-final columnUpdate = "update_time";
-
-  *
-  * */
   Future insertOrUpdateBooks(List<BookBean> books) async {
     var db = await _getDb();
     Batch batch = db.batch();
-//    debugger(when: true);
     for (BookBean book in books) {
       batch.rawInsert('INSERT OR REPLACE INTO '
           '$tableName($columnId,$columnTitle,$columnAuthor,$columnShortIntro,'

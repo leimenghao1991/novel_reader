@@ -1,9 +1,8 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:novel_reader/bloc/bloc_provider.dart';
 import 'package:novel_reader/model/shelf_view_beans.dart';
-import 'package:novel_reader/repo/shelf_repo.dart';
+import 'package:novel_reader/pages/shelf/shelf_repo.dart';
 
 class ShelfBloc implements BlocBase {
   StreamController<List<ShelfBook>> _booksController = StreamController<List<ShelfBook>>.broadcast();

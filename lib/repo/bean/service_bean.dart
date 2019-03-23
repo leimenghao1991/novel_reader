@@ -1,29 +1,3 @@
-class BaseBean {
-  bool ok;
-
-  BaseBean({this.ok});
-}
-
-class RecommendBooks extends BaseBean {
-  List<BookBean> books;
-
-  RecommendBooks({bool ok, this.books}) : super(ok: ok);
-
-  static RecommendBooks fromJson(Map<String, dynamic> json) {
-    var list = json["books"] as List;
-    bool ok = json["ok"];
-
-    List<BookBean> bookModels;
-    if (ok) {
-      bookModels = list.map((i) =>
-          BookBean.fromJson(list[i])
-      ).toList();
-    }
-
-    return RecommendBooks(ok: json["ok"], books: bookModels);
-  }
-}
-
 ///收藏的书籍
 ///
 /// 例：<br>
