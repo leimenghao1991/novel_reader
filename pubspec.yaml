@@ -23,10 +23,6 @@ dependencies:
   # net lib
   dio: ^2.0.0
 
-  firebase_core: ^0.3.1  # add dependency for Firebase Core
-  firebase_analytics: ^2.0.2+1  # add dependency for Google Analytics for Firebase
-  cloud_firestore: ^0.9.5+2  # add dependency for cloud store
-  firebase_storage: ^2.1.0
   cached_network_image: ^0.4.1
   sqflite: ^1.1.0
   path_provider: ^0.4.0
