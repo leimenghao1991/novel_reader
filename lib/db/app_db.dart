@@ -1,3 +1,7 @@
+import 'dart:async';
+
+import 'package:novel_reader/db/provider/chapter_provider.dart';
+import 'package:novel_reader/db/provider/book_mark_provider.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
@@ -12,8 +16,9 @@ class AppDatabase {
   static final AppDatabase _appDatabase = AppDatabase._internal();
 
   AppDatabase._internal() {
-//     debugger(when: true);
      _bookDetailProvider = new BookDetailProvider(this);
+     _chapterProvider = new ChapterProvider(this);
+     _bookMarkProvider = new BookMarkProvider(this);
   }
 
   Database _database;
@@ -23,6 +28,8 @@ class AppDatabase {
   bool didInit = false;
 
   BookDetailProvider _bookDetailProvider;
+  ChapterProvider _chapterProvider;
+  BookMarkProvider _bookMarkProvider;
 
   Future<Database> getDb() async {
     if (!didInit) {
@@ -37,6 +44,8 @@ class AppDatabase {
     _database = await openDatabase(
         path, version: VERSION, onCreate: (Database db, int version) async {
       _bookDetailProvider.init(db);
+      _chapterProvider.init(db);
+      _bookMarkProvider.init(db);
     }, onUpgrade: (Database db, int oldVersion, int newVersion) async {
 
     });
@@ -44,4 +53,21 @@ class AppDatabase {
   }
 
   BookDetailProvider getBookDetailProvider() => _bookDetailProvider;
+
+  ChapterProvider getChapterProvider() => _chapterProvider;
+
+  BookMarkProvider getReadingInfoProvider() => _bookMarkProvider;
+}
+
+abstract class ProviderBase {
+  AppDatabase _appDatabase;
+
+  ProviderBase(AppDatabase appDatabase) {
+    assert (appDatabase != null);
+    _appDatabase = appDatabase;
+  }
+
+  Future<Database> getDb() => _appDatabase.getDb();
+
+  void init(Database db);
 }

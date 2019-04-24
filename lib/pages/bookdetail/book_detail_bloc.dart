@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:novel_reader/bloc/bloc_provider.dart';
-import 'package:novel_reader/model/fromnet/book_detail_bean.dart';
-import 'package:novel_reader/model/fromnet/search_view_bean.dart';
+import 'package:novel_reader/service/book_detail_bean.dart';
+import 'package:novel_reader/service/search_view_bean.dart';
 import 'package:novel_reader/pages/bookdetail/book_detail_repo.dart';
 
 class BookDetailBloc extends BlocBase {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:novel_reader/bloc/bloc_provider.dart';
-import 'package:novel_reader/model/fromdb/shelf_view_beans.dart';
+import 'package:novel_reader/pages/bookpage/content/content_bloc.dart';
+import 'package:novel_reader/pages/bookpage/content/content_view.dart';
+import 'package:novel_reader/pages/shelf/shelf_view_beans.dart';
 import 'package:novel_reader/pages/PageUtils.dart';
 import 'package:novel_reader/pages/shelf/shelf_bloc.dart';
 import 'dart:developer';
@@ -13,8 +15,6 @@ class ShelfView extends StatefulWidget {
   State<StatefulWidget> createState() {
     return _ShelfViewState();
   }
-
-
 }
 
 class _ShelfViewState extends State<ShelfView> {
@@ -86,7 +86,6 @@ class _ShelfViewState extends State<ShelfView> {
 
   Widget _buildListData(BuildContext context, ShelfBook book) {
     var item = book;
-    print("${item.title} images is ${item.image}");
     return new ListTile(
       dense: false,
       isThreeLine: false,
@@ -114,6 +113,7 @@ class _ShelfViewState extends State<ShelfView> {
       onLongPress: () {
         _showLongPressDialog(context, book);
       },
+      onTap: () => Navigator.push(context, new MaterialPageRoute(builder: (contxt)=> BlocProvider(child: new ContentView(), bloc: new ContentBloc(book.id)))),
     );
   }
 

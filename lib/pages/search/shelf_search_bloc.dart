@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:novel_reader/bloc/bloc_provider.dart';
-import 'package:novel_reader/model/fromnet/search_view_bean.dart';
+import 'package:novel_reader/service/search_view_bean.dart';
 import 'package:novel_reader/pages/search/shelf_repo.dart';
 
 class SearchBloc extends BlocBase {

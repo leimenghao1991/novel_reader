@@ -71,8 +71,10 @@ class BookDetailInfo {
   String cate;
   int wordCount;
   int postCount;
+  String lastChapter;
   String updateTime;
-  int follwerCount; //追书人数
+  int chapterCount;
+  int followerCount; //追书人数
   String retentionRadio; //读者留存
   int serializeWordCount; //日更字数
 
@@ -84,8 +86,10 @@ class BookDetailInfo {
     this.cate,
     this.wordCount,
     this.postCount,
+    this.lastChapter,
     this.updateTime,
-    this.follwerCount,
+    this.chapterCount,
+    this.followerCount,
     this.retentionRadio,
     this.serializeWordCount});
 
@@ -99,8 +103,10 @@ class BookDetailInfo {
       cate: json["majorCate"],
       wordCount: json["wordCount"],
       postCount: json["postCount"],
+      lastChapter: json["lastChapter"],
       updateTime: json["updated"],
-      follwerCount: json["followerCount"],
+      chapterCount: json["chaptersCount"],
+      followerCount: json["followerCount"],
       retentionRadio: json["retentionRatio"].toString(),
       serializeWordCount: json["serializeWordCount"]
     );

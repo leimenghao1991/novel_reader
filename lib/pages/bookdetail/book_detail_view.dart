@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:novel_reader/bloc/bloc_provider.dart';
 import 'package:novel_reader/constants.dart';
-import 'package:novel_reader/model/fromnet/book_detail_bean.dart';
-import 'package:novel_reader/model/fromnet/search_view_bean.dart';
+import 'package:novel_reader/service/book_detail_bean.dart';
+import 'package:novel_reader/service/search_view_bean.dart';
 import 'package:novel_reader/pages/PageUtils.dart';
 import 'package:novel_reader/pages/bookdetail/book_detail_bloc.dart';
 
@@ -166,7 +166,7 @@ class _BookDetailState extends State<BookDetailView> {
                       padding: EdgeInsets.symmetric(horizontal: 0, vertical: 3),
                     ),
                     Text(
-                      "${book.follwerCount}",
+                      "${book.followerCount}",
                       style: TextStyle(color: Colors.black, fontSize: 15),
                     )
                   ],

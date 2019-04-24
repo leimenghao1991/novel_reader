@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 
 class BookService {
@@ -18,101 +20,55 @@ class BookService {
   ///获取书架推荐列表
   ///
   /// gender: "male" or "female"
-  ///
-  Future<Response> getRecommendBookPackage(String gender) async {
-    Response response = await _dio.get(
+  ///http://api.zhuishushenqi.com/book/recommend?gender=male
+  Future<Response> getRecommendBookPackage(String gender) {
+    return _dio.get(
       "/book/recommend",
       queryParameters: {"gender": gender},
     );
-    return response;
-//    _handleResponse(response, success: success, error: error, empty: empty, failed: failed);
   }
 
   ///搜索数据
-  Future<Response> searchBook(String query, {Function success, Function error, Function empty, Function failed}) async {
-    Response response = await _dio.get(
-      "/book/fuzzy-search",
-      queryParameters: {"query": query}
-    );
-    return response;
+  Future<Response> searchBook(String query) {
+    return _dio.get("/book/fuzzy-search", queryParameters: {"query": query});
   }
 
   ///获取搜索热词
-  Future<Response> getSearchHotWords() async {
-    Response response = await _dio.get("/book/hot-word");
-    return response;
+  Future<Response> getSearchHotWords() {
+    return _dio.get("/book/hot-word");
   }
 
   ///用户输入自动补全
-  Future<Response> getInputSuggest(String input) async {
-    Response response = await _dio.get(
-        "/book/auto-complete",
-        queryParameters: {"query": input}
-    );
-
-    return response;
+  Future<Response> getInputSuggest(String input) {
+    return _dio.get("/book/auto-complete", queryParameters: {"query": input});
   }
 
   ///获取书籍详细信息
-  Future<Response> getBookDetail(String bookId) async {
-    Response response = await _dio.get("/book/$bookId");
-    return response;
+  Future<Response> getBookDetail(String bookId) {
+    return _dio.get("/book/$bookId");
   }
 
   ///获取书籍的热门评论
-  Future<Response> getBookHotComments(String bookId, int count) async {
-    Response response = await _dio.get(
-        "/post/review/best-by-book",
-        queryParameters: {
-          "book": bookId,
-          "limit": count
-        }
-    );
-    return response;
+  Future<Response> getBookHotComments(String bookId, int count) {
+    return _dio.get("/post/review/best-by-book",
+        queryParameters: {"book": bookId, "limit": count});
   }
 
   ///根据给定的bookId获取推荐书籍
-  Future<Response> getRecommendBooks(String bookId, int count, {Function success, Function error, Function empty, Function failed}) async {
-    Response response = await _dio.get(
-      "/book-list/$bookId/recommend",
-      queryParameters: {"limit": count}
-    );
-
-    return response;
+  Future<Response> getRecommendBooks(String bookId, int count) {
+    return _dio
+        .get("/book-list/$bookId/recommend", queryParameters: {"limit": count});
   }
 
-  ///failed是对于success来说的，一个请求要么success要么failed
-  ///success是请求成功了，并且返回了具体数据
-  ///error是带有具体错误信息的failed
-  ///empty是请求成功了，但是没有数据的failed，比如搜索一个人，前后台通信成功了，但是没有匹配到，后台返回了空或者空map
-  void _handleResponse(Response response, {Function success, Function error, Function empty, Function failed}) {
-    int code = response.statusCode;
-    bool successCalled = false;
-    if (code >= 200 && code <= 300) {
-      Map<String, dynamic> data = response.data;
-      if (data != null) {
-        if (success != null) {
-          successCalled = true;
-          success(data);
-        }
-      } else {
-        if (empty != null) {
-          empty(data);
-        }
-      }
-    } else {
-      if (error != null) {
-        error("请求失败：$code");
-      }
-    }
-    if (failed != null && !successCalled) {
-      failed();
-    }
+  //    http://api.zhuishushenqi.com/mix-atoc/5a997704b01a78b173e3d03a?view=view
+  Future<Response> getChapters(String bookId) {
+    return _dio.get("/mix-atoc/$bookId?view=view");
   }
 }
 
-
 bool isResponseSuccess(Response response) {
-  return response != null && response.statusCode >= 200 &&
-      response.statusCode < 300 && response.data != null;
+  return response != null &&
+      response.statusCode >= 200 &&
+      response.statusCode < 300 &&
+      response.data != null;
 }
